@@ -11,6 +11,20 @@ Tablet Version (Pixel C)
 
 ![Popular Movies tablet application](screenshots/pixelc_screenshot_med.png?raw=true "Stage 1")
 
+Tablet Version (Nexus 9)
+
+Landscape Mode - Main Screen
+![Popular Movies tablet application](screenshots/nexus9_screenshot0_med.png?raw=true "Stage 1")
+
+Landscape Mode - Detail Screen
+![Popular Movies tablet application](screenshots/nexus9_screenshot1_med.png?raw=true "Stage 1")
+
+Portrait Mode - Main Screen
+![Popular Movies tablet application](screenshots/nexus9_screenshot2_med.png?raw=true "Stage 1")
+
+Portrait Mode - Detail Screen
+![Popular Movies tablet application](screenshots/nexus9_screenshot3_med.png?raw=true "Stage 1")
+
 Phone Version (Pixel XL)
 
 ![Popular Movies phone application](screenshots/pixelxl_main_med.png?raw=true "Stage 1")
@@ -31,26 +45,28 @@ Note:
 
 The project requires the Volley library and a valid TMDB API key to compile and run. A valid TMDB API key can be accessed via the TMDB website.
 
-The Volley library has been cloned at the same directory level as the P1_AAD project.
+The Volley library has been cloned into the P1_AAD project.
 
 i.e.
 
 + Parent directory
   + P1_AAD
-  + Volley
+    + app
+    + build
+    + gradle
+    + screenshots
+    + volley
 
 
 ### How to build
 
-1. git clone https://github.com/rosera/PopularMovies.git
-3. git clone https://github.com/google/volley.git (i.e. clone at the same directory level as P1_AAD)
+1. git clone https://github.com/rosera/P1_AAD.git
+2. cd P1_AAD
+3. git clone https://github.com/google/volley.git (i.e. clone into the empty Volley directory)
 4. Start Android Studio
 5. Import the P1_AAD project
 6. Create/Amend a new gradle file - gradle.properties
 7. Edit gradle.properties and add TMDB_API_KEY="Enter Your valid API KEY" (Note: if you dont already have a valid TMDB API key, sign up at https://developers.themoviedb.org/3/getting-started).
-
-![Popular Movies phone application](images/gradle-properties-screenshot.png?raw=true "Gradle Properties")
-
 8. Compile and run the code
 
 ## Acknowledgments
