@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.processisolation.rosera.p1_aad.MediumDetailFragment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/medium_detail_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/movie_placeholder"
+            android:scaleType="fitXY"
+            android:padding="16dp"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_alignRight="@+id/medium_detail_poster"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="#5c5b5b" />
+
+        <TextView
+            android:id="@+id/medium_detail_title"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/medium_detail_poster"
+            android:text="Title: Deadpool"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/medium_detail_rating_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medium_detail_title"
+            android:layout_toRightOf="@+id/medium_detail_poster"
+            android:text="Rating:"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/medium_detail_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medium_detail_title"
+            android:layout_toRightOf="@+id/medium_detail_rating_header"
+            android:text="Voter Avg: 8.1"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/medium_detail_releasedt_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medium_detail_rating_header"
+            android:layout_toRightOf="@+id/medium_detail_poster"
+            android:text="Release Date:"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/medium_detail_releasedt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medium_detail_rating"
+            android:layout_toRightOf="@+id/medium_detail_releasedt_header"
+            android:text="Release Date:"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/medium_detail_plot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medium_detail_releasedt"
+            android:layout_toRightOf="@+id/medium_detail_poster"
+            android:text="Overview: This is a story all about how my life got twisted upside down."
+            android:padding="10dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
