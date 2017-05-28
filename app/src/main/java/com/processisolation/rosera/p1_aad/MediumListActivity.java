@@ -65,6 +65,11 @@ public class MediumListActivity extends AppCompatActivity {
     // TODO: Change hardwire screen density
     private String              mScreenDensity          = null;
 
+    // Screen density settings
+    private static final int DENSITY_280 = 280;
+    private static final int DENSITY_480 = 480;
+    private static final int DENSITY_570 = 570;
+
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -79,16 +84,6 @@ public class MediumListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
-
-        // TODO: Remove ListActivity FAB
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         // Allocate memory for the media download
         if (mMediaInformation == null) {
@@ -111,12 +106,8 @@ public class MediumListActivity extends AppCompatActivity {
 
         // Check network/internet status
         if (getOnlineStatus()) {
-
             // Check the screen density for a rough guide to image size
             getScreenDensity();
-//
-            // Toggle sort setting before making the API request
-//            setSortMovieAPI(mSortOrderPref);
 
             // Call to populate the film information
             onRequestMovieAPI();
@@ -126,8 +117,6 @@ public class MediumListActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     getResources().getString(R.string.media_network_connection), Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
 
@@ -148,16 +137,13 @@ public class MediumListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.most_popular:
-//                setSortMovieAPI(false);
-
-                mSortOrder = getResources().getString(R.string.media_popular);;
+                mSortOrder = getResources().getString(R.string.media_popular);
                 // Call to populate the film information
                 onRequestMovieAPI();
                 return true;
 
             case R.id.highest_rated:
-//                setSortMovieAPI(true);
-                mSortOrder = getResources().getString(R.string.media_top_rated);;
+                mSortOrder = getResources().getString(R.string.media_top_rated);
                 // Call to populate the film information
                 onRequestMovieAPI();
                 return true;
@@ -202,14 +188,14 @@ public class MediumListActivity extends AppCompatActivity {
 
         int density = metrics.densityDpi;
 
-        if (density < 280)
-            mScreenDensity = "w185/";
-        else if (density < 480)
-            mScreenDensity = "w342/";
-        else if (density < 570)
-            mScreenDensity = "w500/";
+        if (density < DENSITY_280)
+            mScreenDensity = getResources().getString(R.string.media_density_185);
+        else if (density < DENSITY_480)
+            mScreenDensity = getResources().getString(R.string.media_density_342);
+        else if (density < DENSITY_570)
+            mScreenDensity = getResources().getString(R.string.media_density_500);
         else
-            mScreenDensity = "w780/";
+            mScreenDensity = getResources().getString(R.string.media_density_780);
     }
 
 
@@ -313,7 +299,7 @@ public class MediumListActivity extends AppCompatActivity {
         public void onBindViewHolder(final MediumListActivity.MediumListRecyclerViewAdapter.ViewHolder holder, int position) {
 
             holder.mMediumTitle.setText(mMedia.get(position).getTitle());
-            holder.mMediumRating.setText("Rating: " + String.valueOf(mMedia.get(position).getRating()));
+            holder.mMediumRating.setText(getResources().getString(R.string.medium_fragment_rating_header) + String.valueOf(mMedia.get(position).getRating()));
 
             Picasso.with(getApplicationContext())
                     .load(mMedia.get(position).getThumbnail())
@@ -325,12 +311,6 @@ public class MediumListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    // TODO: P1_AAD - details to be displayed
-                    // TITLE
-                    // RATING
-                    // POSTER
-                    // RELEASE DATE
-                    // PLOT
                     Media Medium =  mMediaInformation.get(holder.getLayoutPosition());
 
                     if (mTwoPane) {
@@ -363,13 +343,10 @@ public class MediumListActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public String mMediumID;
             public final TextView mMediumTitle;
             public final TextView mMediumRating;
             public final ImageView mMediumPoster;
 
-//            public DummyContent.DummyItem mItem;
-//
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
@@ -378,10 +355,6 @@ public class MediumListActivity extends AppCompatActivity {
                 mMediumPoster   = (ImageView) view.findViewById(R.id.media_image);
             }
 
-//            @Override
-//            public String toString() {
-//                return super.toString() + " '" + mContentView.getText() + "'";
-//            }
         }
     }
 

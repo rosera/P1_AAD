@@ -59,7 +59,6 @@ public class MediumDetailActivity extends AppCompatActivity {
             arguments.putString(MediumDetailFragment.ARG_MEDIUM_TITLE,
                     getIntent().getStringExtra(MediumDetailFragment.ARG_MEDIUM_TITLE));
 
-
             MediumDetailFragment fragment = new MediumDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

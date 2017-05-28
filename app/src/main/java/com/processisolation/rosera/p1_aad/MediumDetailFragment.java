@@ -40,18 +40,18 @@ public class MediumDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+//    public static final String ARG_ITEM_ID = "item_id";
     private static final String API_KEY             = TMDB_API_KEY;
     private View mRootview;
 
     // TODO: Pass arguments across from Medium List Activity
     public static final String ARG_MEDIUM_ID        = "medium_id";
     public static final String ARG_MEDIUM_TITLE     = "medium_title";
-    public static final String ARG_MEDIUM_RATING    = "medium_rating";
-    public static final String ARG_MEDIUM_RELEASE   = "medium_release";
-    public static final String ARG_MEDIUM_PLOT      = "medium_plot";
-    public static final String ARG_MEDIUM_POSTER    = "medium_poster";
 
+    // Screen density settings
+    private static final int DENSITY_280 = 280;
+    private static final int DENSITY_480 = 480;
+    private static final int DENSITY_570 = 570;
 
     private static final int TMDB_MOVIES    = 0;
     private static final int TMDB_TRAILERS  = 1;
@@ -105,12 +105,12 @@ public class MediumDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(R.layout.medium_detail, container, false);
         mRootview = inflater.inflate(R.layout.medium_detail, container, false);
 
-        if (mRootview != null)
+        if (mRootview != null) {
             // Make a call to the TMDB
             onRequestMovieAPI(mID, TMDB_TRAILERS);
+        }
 
         return mRootview;
     }
@@ -131,14 +131,14 @@ public class MediumDetailFragment extends Fragment {
 
         String  strScreenDensity;
 
-        if (density < 280)
-            strScreenDensity = "w185/";
-        else if (density < 480)
-            strScreenDensity = "w342/";
-        else if (density < 570)
-            strScreenDensity = "w500/";
+        if (density < DENSITY_280)
+            strScreenDensity = getResources().getString(R.string.media_density_185);
+        else if (density < DENSITY_480)
+            strScreenDensity = getResources().getString(R.string.media_density_342);
+        else if (density < DENSITY_570)
+            strScreenDensity = getResources().getString(R.string.media_density_500);
         else
-            strScreenDensity = "w780/";
+            strScreenDensity = getResources().getString(R.string.media_density_780);
 
         return strScreenDensity;
     }
@@ -160,7 +160,7 @@ public class MediumDetailFragment extends Fragment {
 
     private void onRequestMovieAPI(String mID, int searchType) {
         // TODO: Stage 2: mFilmAPI Query
-        final String MOVIE_API_URI = "http://api.themoviedb.org/3/movie/" ;
+        final String MOVIE_API_URI = getResources().getString(R.string.medium_tmdb_api);
         final String MOVIE_API_KEY = "?api_key=" + TMDB_API_KEY;
         final String MOVIE_API_VIDEO = "&append_to_response=videos";
         final String MOVIE_API_REVIEWS = "/reviews";
@@ -197,7 +197,7 @@ public class MediumDetailFragment extends Fragment {
 
         // TODO: Alter setting - "w92", "w154", "w185", "w342", "w500", "w780", or "original".
         // TODO: Add a setting to allow the user to select image size
-        final String MOVIE_IMAGE_URI = "http://image.tmdb.org/t/p/";
+        final String MOVIE_IMAGE_URI = getResources().getString(R.string.medium_image_uri);
 
     /*
      *  JSON Request - Volley JSON example
